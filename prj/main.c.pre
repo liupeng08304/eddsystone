@@ -1,0 +1,97 @@
+#include "nrf_log.h"
+#include "rfid.h"
+#include "utility.h"
+#include "s132config.h"
+#include "app_timer.h"
+#include "boot.h"
+#include "upfile.h"
+#include "lis3dh_driver.h"
+#include "lcd.h"
+#include "protocol.h"
+
+#define VERSION_NUMBER  2
+const uint8_t version[8] __attribute__ ((at(0x23000+1024)))= {2,0,VERSION_NUMBER,'Y','H',0xe3,0,VERSION_NUMBER};
+
+void showUpgredePersent(uint8_t persent)
+{
+	static uint8_t pb=100;
+	if(persent!=pb)
+	{
+		pb=persent;
+LOG("persent:%d\r\n",persent);
+	}
+}
+
+
+
+
+void EraseBond(void)
+{
+
+}
+
+
+int main(void)
+{
+    uint32_t err_code,sec;
+#ifdef DEBUG_PRINTF
+    SEGGER_RTT_Init();
+    LOG("start\r\n");
+#endif
+
+    boot_to_new_appilacation(0,0);
+    close_all_gpio();
+    InitEEprom();
+    SleepInit(StuEeprom.StuPara.sleep_start_min,\
+              StuEeprom.StuPara.sleep_end_min,\
+              &StuEeprom.StuPara.static_min,\
+              Flash_Write_World,\
+              Flash_Erase_Page,\
+              Flash_ReadData);
+    InitExFlash();
+	InitUiFileCrc();
+
+//  TestFlash();
+    InitAdc();
+	
+    LCD_Init();
+	
+
+	
+	
+		V_InitWdt(30000);
+		err_code = app_timer_init();
+		APP_ERROR_CHECK(err_code);
+		RtcTimeInit();
+		init_ui_time();
+// 		oled_display_on(true);
+// 		LcdDisplayTime(INIT_UI);
+// 		while(1)
+// 		{
+//   power_manage();         /*key  time BLE */
+//         V_FeedWdog();           /*喂狗*/
+// 		}
+		
+//     InitHeatRate();
+//     InitMotor();
+    g_sensor_ok=((false==AccSensorConfig()) ? 0:2);/*初始化加速度传感器*/
+    SetAccPowerOff(true);/*关闭加速度传感器*/
+//     ManagePowerOn();/*等待开机*/
+    init_acc_time(); /*初始化加速度传感器的采集定时器*/
+    start_acc_time(true);/*启动加速度传感器的采集定时器*/
+    SetAccPowerOff(false);/*启动加速度传感器*/
+		buttons_init();
+    InitRfid(s132_config_enable,delay_ms,1000);
+    ChangeToRfid(false,NULL);/*启动蓝牙*/
+    while(1)
+    {
+        power_manage();         /*key  time BLE */
+        V_FeedWdog();           /*喂狗*/
+        task_and_ble_data();    /*处理蓝牙协议栈数据*/
+        task_ui();
+        TaskBleUpfile();
+    }
+}
+
+
+

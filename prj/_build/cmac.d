@@ -1,0 +1,12 @@
+.\_build\cmac.o: ..\external\cifra_AES128-EAX\cmac.c
+.\_build\cmac.o: ..\external\cifra_AES128-EAX\handy.h
+.\_build\cmac.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\_build\cmac.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\_build\cmac.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\_build\cmac.o: ..\external\cifra_AES128-EAX\prp.h
+.\_build\cmac.o: ..\external\cifra_AES128-EAX\modes.h
+.\_build\cmac.o: ..\external\cifra_AES128-EAX\bitops.h
+.\_build\cmac.o: ..\external\cifra_AES128-EAX\blockwise.h
+.\_build\cmac.o: ..\external\cifra_AES128-EAX\gf128.h
+.\_build\cmac.o: ..\external\cifra_AES128-EAX\tassert.h
+.\_build\cmac.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

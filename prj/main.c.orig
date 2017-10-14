@@ -1,0 +1,104 @@
+#include "nrf_log.h"
+#include "rfid.h"
+#include "utility.h"
+#include "s132config.h"
+#include "app_timer.h"
+#include "boot.h"
+#include "bsp.h"
+#include "upfile.h"
+#include "protocol.h"
+#include "wdt.h"
+#include "ui_app.h"
+#include "pedometer_klx.h"
+#include "sleep.h"
+#include "oled_drv.h"
+
+#define VERSION_NUMBER 0
+const uint8_t version[8] __attribute__ ((at(0x23000+1024)))= {2,1,VERSION_NUMBER,'C','H',0xe4,1,VERSION_NUMBER};
+
+void init_all(void);
+
+int main(void)
+{
+
+    init_all();
+    /*
+    开机界面 OK
+    计步不准
+    心率最大值和心率最小值也要添加 OK
+    闹钟界面没有做完 OK
+    闹钟要添加  闹钟重复要添加
+    通知的界面没有做完 OK
+    添加运动数据保存  发送   2c
+    添加运动数据心率保存   发送  2c
+    2017-09-27通知滚动屏幕的没有做
+    2017-09-27跑步心率  长安3S退出没做
+    2017-09-27跨天的问题   OK
+	2017-09-28发送运动数据和 运动心率数据
+	2017-09-28 自由调整界面协议
+	2017-09-28 刚刚进入运动模式  配速就有
+    */
+    while(1)
+    {
+        power_manage();         /*key  time BLE */
+        V_FeedWdog();           /*喂狗*/
+        task_and_ble_data();    /*处理蓝牙协议栈数据*/
+        task_ui();
+        TaskBleUpfile();
+    }
+
+}
+
+//extern uint8_t Rotation;
+void init_all(void)
+{
+
+
+    boot_to_new_appilacation(0,0);
+    LOG_DEBUG_PRINTF("aaplication start\r\n");
+    close_all_gpio();
+    InitEEprom();
+    StuEeprom.StuPara.step_goal=10000;
+    NRF_POWER->DCDCEN=1;
+//     InitExFlash();
+//     InitUiFileCrc();
+    InitAdc();
+    oled_init(OLED_SCL_GPIO_Pin,OLED_SDA_GPIO_Pin,OLED_RES_GPIO_Pin);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	oled_clean(0);
+//	ShowStartUi();
+//	oled_display();
+//	oled_display_on(true);
+//	Rotation = 0;
+//	oled_clean(0);
+//	/*调用开机界面*/
+//	ShowStartUi();///////////////////////////////xxxx
+//	oled_display();
+//	oled_display_on(true);
+//	Rotation = 1;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    InitPower();//充电检测
+    V_InitWdt(30000);
+    app_timer_init();
+    RtcTimeInit();
+    init_ui_time();
+    InitHeatRate();
+    InitMotor();
+    Open32768();
+    SleepInit(StuEeprom.StuPara.sleep_start_min,\
+              StuEeprom.StuPara.sleep_end_min,\
+              &StuEeprom.StuPara.static_min,\
+              Flash_Write_World,\
+              Flash_Erase_Page,\
+              Flash_ReadData);
+    g_sensor_ok=((false==AccSensorConfig()) ? 0:2);/*初始化加速度传感器*/
+    SetAccPowerOff(true);/*关闭加速度传感器*/
+    ManagePowerOn();/*等待开机*/
+    init_acc_time(); /*初始化加速度传感器的采集定时器*/
+    start_acc_time(true);/*启动加速度传感器的采集定时器*/
+    SetAccPowerOff(false);/*启动加速度传感器*/
+    InitRfid(s132_config_enable,delay_ms,1000);
+    InitStep();
+    ChangeToRfid(false,NULL);/*启动蓝牙*/
+    HrCheckWear(0);
+}

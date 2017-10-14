@@ -1,0 +1,84 @@
+*** Creating Trace Output File '.\_build\eddsytone.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\_build\main.o"'
+### List of Objects: adding '".\_build\boards.o"'
+### List of Objects: adding '".\_build\bsp.o"'
+### List of Objects: adding '".\_build\bsp_btn_ble.o"'
+### List of Objects: adding '".\_build\bsp_nfc.o"'
+### List of Objects: adding '".\_build\ble_advdata.o"'
+### List of Objects: adding '".\_build\ble_advertising.o"'
+### List of Objects: adding '".\_build\ble_conn_params.o"'
+### List of Objects: adding '".\_build\ble_conn_state.o"'
+### List of Objects: adding '".\_build\ble_srv_common.o"'
+### List of Objects: adding '".\_build\nrf_ble_gatt.o"'
+### List of Objects: adding '".\_build\nrf_ble_escs.o"'
+### List of Objects: adding '".\_build\nrf_drv_clock.o"'
+### List of Objects: adding '".\_build\nrf_drv_common.o"'
+### List of Objects: adding '".\_build\nrf_drv_gpiote.o"'
+### List of Objects: adding '".\_build\nrf_drv_saadc.o"'
+### List of Objects: adding '".\_build\nrf_saadc.o"'
+### List of Objects: adding '".\_build\aes.o"'
+### List of Objects: adding '".\_build\app_button.o"'
+### List of Objects: adding '".\_build\app_error.o"'
+### List of Objects: adding '".\_build\app_error_weak.o"'
+### List of Objects: adding '".\_build\app_scheduler.o"'
+### List of Objects: adding '".\_build\app_timer.o"'
+### List of Objects: adding '".\_build\app_util_platform.o"'
+### List of Objects: adding '".\_build\blockwise.o"'
+### List of Objects: adding '".\_build\cifra_eax_aes.o"'
+### List of Objects: adding '".\_build\cmac.o"'
+### List of Objects: adding '".\_build\crc16.o"'
+### List of Objects: adding '".\_build\eax.o"'
+### List of Objects: adding '".\_build\es_adv.o"'
+### List of Objects: adding '".\_build\es_adv_frame.o"'
+### List of Objects: adding '".\_build\es_adv_timing.o"'
+### List of Objects: adding '".\_build\es_adv_timing_resolver.o"'
+### List of Objects: adding '".\_build\es_battery_voltage_saadc.o"'
+### List of Objects: adding '".\_build\es_flash.o"'
+### List of Objects: adding '".\_build\es_gatts.o"'
+### List of Objects: adding '".\_build\es_gatts_read.o"'
+### List of Objects: adding '".\_build\es_gatts_write.o"'
+### List of Objects: adding '".\_build\es_security.o"'
+### List of Objects: adding '".\_build\es_slot.o"'
+### List of Objects: adding '".\_build\es_slot_reg.o"'
+### List of Objects: adding '".\_build\es_stopwatch.o"'
+### List of Objects: adding '".\_build\es_tlm.o"'
+### List of Objects: adding '".\_build\fds.o"'
+### List of Objects: adding '".\_build\gf128.o"'
+### List of Objects: adding '".\_build\hardfault_implementation.o"'
+### List of Objects: adding '".\_build\modes.o"'
+### List of Objects: adding '".\_build\nrf_assert.o"'
+### List of Objects: adding '".\_build\nrf_atfifo.o"'
+### List of Objects: adding '".\_build\nrf_balloc.o"'
+### List of Objects: adding '".\_build\nrf_ble_es.o"'
+### List of Objects: adding '".\_build\nrf_fstorage.o"'
+### List of Objects: adding '".\_build\nrf_fstorage_sd.o"'
+### List of Objects: adding '".\_build\nrf_memobj.o"'
+### List of Objects: adding '".\_build\nrf_section_iter.o"'
+### List of Objects: adding '".\_build\nrf_strerror.o"'
+### List of Objects: adding '".\_build\sdk_mapped_flags.o"'
+### List of Objects: adding '".\_build\sensorsim.o"'
+### List of Objects: adding '".\_build\nrf_log_frontend.o"'
+### List of Objects: adding '"..\moudle\occ\occ_lib_nrf52.lib"'
+### List of Objects: adding '".\_build\nrf_sdh.o"'
+### List of Objects: adding '".\_build\nrf_sdh_ble.o"'
+### List of Objects: adding '".\_build\nrf_sdh_soc.o"'
+### List of Objects: adding '".\_build\arm_startup_nrf52.o"'
+### List of Objects: adding '".\_build\system_nrf52.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M4.fp ".\_build\main.o" ".\_build\boards.o" ".\_build\bsp.o" ".\_build\bsp_btn_ble.o" ".\_build\bsp_nfc.o" ".\_build\ble_advdata.o" ".\_build\ble_advertising.o" ".\_build\ble_conn_params.o" ".\_build\ble_conn_state.o" ".\_build\ble_srv_common.o" ".\_build\nrf_ble_gatt.o" ".\_build\nrf_ble_escs.o" ".\_build\nrf_drv_clock.o" ".\_build\nrf_drv_common.o" ".\_build\nrf_drv_gpiote.o" ".\_build\nrf_drv_saadc.o" ".\_build\nrf_saadc.o" ".\_build\aes.o" ".\_build\app_button.o" ".\_build\app_error.o" ".\_build\app_error_weak.o" ".\_build\app_scheduler.o" ".\_build\app_timer.o" ".\_build\app_util_platform.o" ".\_build\blockwise.o" ".\_build\cifra_eax_aes.o" ".\_build\cmac.o" ".\_build\crc16.o" ".\_build\eax.o" ".\_build\es_adv.o" ".\_build\es_adv_frame.o" ".\_build\es_adv_timing.o" ".\_build\es_adv_timing_resolver.o" ".\_build\es_battery_voltage_saadc.o" ".\_build\es_flash.o" ".\_build\es_gatts.o" ".\_build\es_gatts_read.o" ".\_build\es_gatts_write.o" ".\_build\es_security.o" ".\_build\es_slot.o" ".\_build\es_slot_reg.o" ".\_build\es_stopwatch.o" ".\_build\es_tlm.o" ".\_build\fds.o" ".\_build\gf128.o" ".\_build\hardfault_implementation.o" ".\_build\modes.o" ".\_build\nrf_assert.o" ".\_build\nrf_atfifo.o" ".\_build\nrf_balloc.o" ".\_build\nrf_ble_es.o" ".\_build\nrf_fstorage.o" ".\_build\nrf_fstorage_sd.o" ".\_build\nrf_memobj.o" ".\_build\nrf_section_iter.o" ".\_build\nrf_strerror.o" ".\_build\sdk_mapped_flags.o" ".\_build\sensorsim.o" ".\_build\nrf_log_frontend.o" C:\Users\Administrator\Desktop\eddsystone\moudle\occ\occ_lib_nrf52.lib ".\_build\nrf_sdh.o" ".\_build\nrf_sdh_ble.o" ".\_build\nrf_sdh_soc.o" ".\_build\arm_startup_nrf52.o" ".\_build\system_nrf52.o" 
+--library_type=microlib --strict --scatter ".\_build\eddsytone.sct" 
+--diag_suppress 6330 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\_build\eddsytone.map" -o .\_build\eddsytone.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\_build\eddsytone.axf'
+### ADS-LD Command File: '.\_build\eddsytone.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\_build\eddsytone.lnp', Handle=0x00000270
+### Writing '.lnp' file
+### ADS-LD Command file '.\_build\eddsytone.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 11 errors
+### Updating obj list
+### LDADS_file() completed.
